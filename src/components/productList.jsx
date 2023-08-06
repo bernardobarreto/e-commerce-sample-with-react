@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useQuery } from 'react-query'
+import ProductCard from './productCard'
 
 const ProductList = () => {
   const fetchList = async () => {
@@ -15,12 +16,12 @@ const ProductList = () => {
 
   return (
     <>
-      <h1>Product Listing</h1>
-      <ul>
-        {list.map((product, index) => (
-          <li key={index}>{product.title}</li>
+      <h1 className="text-3xl text-center mt-4 mb-10">Product Listing</h1>
+      <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mx-10'>
+        {list.map((product) => (
+          <ProductCard key={product.id} attrs={product} />
         ))}
-      </ul>
+      </div>
     </>
   )
 }
