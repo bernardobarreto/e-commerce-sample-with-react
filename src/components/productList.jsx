@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
+import { useQuery } from 'react-query'
 
 const ProductList = () => {
-  const [list, setList] = useState([]);
-
-  const getListFromApi = async () => {
+  const fetchList = async () => {
     const { data } = await axios.get(`https://fakestoreapi.com/products`)
-    setList(data)
-    console.log('Product list: ', data);
+    return data
   }
 
-  useEffect(() => {
-    getListFromApi()
-  }, [])
+  const { isLoading, error, data: list } = useQuery('productList', fetchList)
+
+  if (isLoading) return 'Loading...'
+  if (error) return 'An error has ocurred: ' + error.message
 
   return (
     <>
