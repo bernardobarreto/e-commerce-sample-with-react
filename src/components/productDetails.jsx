@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem } from '../features/cartSlice'
+import { addItem as cartAddItem } from '../features/cartSlice'
 import axios from 'axios'
 
 const ProductDetails = () => {
@@ -31,7 +31,7 @@ const ProductDetails = () => {
           <p className="text-2xl underline my-4">${attrs.price}</p>
           <button
             className="my-4 py-1 px-4 text-xl bg-blue-600 hover:bg-blue-800 text-center rounded text-white hover:cursor-pointer"
-            onClick={() => dispatch(addItem(attrs.id))}
+            onClick={() => dispatch(cartAddItem(attrs.id))}
             >
               Add to cart</button>
           <p className='underline py-4'><Link to='/'>Go back to home page</Link></p>
