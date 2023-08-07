@@ -1,9 +1,8 @@
-import './App.css'
-import ProductList from './components/productList'
+import AppRoutes from './appRoutes'
 
 function App() {
   return (
-    <ProductList/>
+    <AppRoutes/>
   )
 }
 
