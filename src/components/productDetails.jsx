@@ -1,9 +1,13 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../features/cartSlice'
 import axios from 'axios'
 
 const ProductDetails = () => {
   const { id } = useParams()
+
+  const dispatch = useDispatch()
 
   const fetchProduct = async () => {
     const { data } = await axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -25,7 +29,11 @@ const ProductDetails = () => {
         <div>
           <p>{attrs.description}</p>
           <p className="text-2xl underline my-4">${attrs.price}</p>
-          <button className="my-4 py-1 px-4 text-xl bg-blue-600 hover:bg-blue-800 text-center rounded text-white hover:cursor-pointer">Add to cart</button>
+          <button
+            className="my-4 py-1 px-4 text-xl bg-blue-600 hover:bg-blue-800 text-center rounded text-white hover:cursor-pointer"
+            onClick={() => dispatch(addItem(attrs.id))}
+            >
+              Add to cart</button>
           <p className='underline py-4'><Link to='/'>Go back to home page</Link></p>
         </div>
       </div>
