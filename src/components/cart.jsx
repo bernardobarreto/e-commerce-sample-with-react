@@ -2,15 +2,18 @@ import { useSelector, useDispatch } from "react-redux"
 import { removeItem as cartRemoveItem } from '../features/cartSlice'
 
 const Cart = () => {
-  const selector = useSelector((state) => state.cart.items)
-  console.log(selector);
+  const products = useSelector((state) => state.cart.items)
 
   const dispatch = useDispatch()
+
+  if (products.length < 1) return (
+    <p className='text-center m-4'>Your cart is empty</p>
+  )
 
   return (
     <div className='max-w-md mx-auto'>
       <h1 className='text-center text-3xl'>Cart</h1>
-      {selector.map((product, index) => (
+      {products.map((product, index) => (
         <div key={index}>
           <div className='grid grid-cols-2 border p-4'>
             <div>
