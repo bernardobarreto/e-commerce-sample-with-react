@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { removeItem as cartRemoveItem } from '../features/cartSlice'
 
 const Cart = () => {
   const selector = useSelector((state) => state.cart.items)
   console.log(selector);
+
+  const dispatch = useDispatch()
 
   return (
     <div className='max-w-md mx-auto'>
@@ -16,6 +19,14 @@ const Cart = () => {
             <div>
               <p>{product.title}</p>
               <p className='text-right'>${product.price}</p>
+              <p>
+                <button
+                  className="px-2 text-md bg-blue-600 hover:bg-blue-800 text-center rounded text-white hover:cursor-pointer"
+                  onClick={() => dispatch(cartRemoveItem(index))}
+                >
+                  Remove from cart
+                </button>
+              </p>
             </div>
           </div>
         </div>

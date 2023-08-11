@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem as cartAddItem } from '../features/cartSlice'
 import axios from 'axios'
-import { useState } from 'react'
 
 const ProductDetails = () => {
   const { id } = useParams()
