@@ -28,6 +28,9 @@ const ProductDetails = () => {
 
   return (
     <div className="max-w-md mx-auto">
+      <p className='underline text-center mb-4'>
+        <Link to='/cart'>Cart</Link>
+      </p>
       <p className='my-4 text-2xl'>{attrs.title}</p>
       <div className='grid grid-cols-2'>
         <div className="mr-4">
